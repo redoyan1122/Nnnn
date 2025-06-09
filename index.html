@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Betting Panel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111827;
+      color: #fff;
+    }
+    header {
+      background: #1f2937;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .balance {
+      font-size: 18px;
+      color: #10b981;
+    }
+    .match-card {
+      background: #1f2937;
+      margin: 15px;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .match-card input, .match-card select, .match-card button {
+      margin: 5px 0;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+    }
+    .wallet-btn {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      background: #10b981;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #1f2937;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+    }
+    .admin-btn {
+      position: fixed;
+      bottom: 15px;
+      left: 15px;
+      background: #f59e0b;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ম্যাচ বেটিং</h1>
+    <div class="balance">ব্যালেন্স: ৳<span id="balance">1000</span></div>
+  </header>
+
+  <section id="matchList">
+    <div class="match-card">
+      <h2>বাংলাদেশ vs ভারত</h2>
+      <select>
+        <option>বাংলাদেশ</option>
+        <option>ভারত</option>
+      </select>
+      <input type="number" placeholder="এমাউন্ট লিখুন">
+      <button>বেট কনফার্ম</button>
+    </div>
+  </section>
+
+  <button class="wallet-btn" onclick="document.getElementById('walletModal').style.display='flex'">👜</button>
+  <button class="admin-btn" onclick="document.getElementById('adminModal').style.display='flex'">R</button>
+
+  <!-- Wallet Modal -->
+  <div id="walletModal" class="modal">
+    <div class="modal-content">
+      <h3>ওয়ালেট</h3>
+      <h4>ডিপোজিট</h4>
+      <select>
+        <option>বিকাশ</option>
+        <option>নগদ</option>
+      </select>
+      <p>নাম্বার: 01816395401</p>
+      <input type="text" placeholder="ট্রানজেকশন নাম্বার">
+      <button>সাবমিট করুন</button>
+      <hr>
+      <h4>উইথড্র</h4>
+      <input type="number" placeholder="টাকার পরিমাণ">
+      <select>
+        <option>বিকাশ</option>
+        <option>নগদ</option>
+      </select>
+      <input type="text" placeholder="আপনার নাম্বার দিন">
+      <button>উইথড্র করুন</button>
+      <br><br>
+      <button onclick="document.getElementById('walletModal').style.display='none'">বন্ধ করুন</button>
+    </div>
+  </div>
+
+  <!-- Admin Modal -->
+  <div id="adminModal" class="modal">
+    <div class="modal-content">
+      <h3>এডমিন লগইন</h3>
+      <input type="password" placeholder="পাসওয়ার্ড দিন" id="adminPass">
+      <button onclick="checkAdminPass()">লগইন</button>
+    </div>
+  </div>
+
+  <script>
+    function checkAdminPass() {
+      const pass = document.getElementById("adminPass").value;
+      if (pass === "rezoan") {
+        alert("এডমিন প্যানেলে প্রবেশ করা হয়েছে (ডেমো)।");
+        document.getElementById('adminModal').style.display = 'none';
+        // এখানে রিয়েল এডমিন প্যানেল রিডাইরেক্ট বা UI দেখানো হবে
+      } else {
+        alert("ভুল পাসওয়ার্ড!");
+      }
+    }
+  </script>
+</body>
+</html>
